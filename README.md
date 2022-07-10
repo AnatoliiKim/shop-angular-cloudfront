@@ -29,3 +29,8 @@ Follow the steps:
 - git clone
 - npm i
 - ng serve
+
+# Task-2
+
+Link to S3 bucket: https://s3.console.aws.amazon.com/s3/buckets/ang-shop-test-bucket?region=us-east-1&tab=objects
+Link to the app: http://ang-shop-test-bucket.s3-website-us-east-1.amazonaws.com/
