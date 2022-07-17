@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Product } from './product.interface';
 
 import { ApiService } from '../core/api.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +42,7 @@ export class ProductsService extends ApiService {
         'Endpoint "bff" is disabled. To enable change your environment.ts config'
       );
       return this.http
-        .get<Product[]>('/assets/products.json')
+        .get<Product[]>(environment.apiEndpoints.product)
         .pipe(
           map(
             (products) => products.find((product) => product.id === id) || null
@@ -60,7 +61,9 @@ export class ProductsService extends ApiService {
       console.warn(
         'Endpoint "bff" is disabled. To enable change your environment.ts config'
       );
-      return this.http.get<Product[]>('/assets/products.json');
+      return this.http
+        .get<any>(environment.apiEndpoints.product)
+        .pipe(map((data) => JSON.parse(data?.products)));
     }
 
     const url = this.getUrl('bff', 'products');
